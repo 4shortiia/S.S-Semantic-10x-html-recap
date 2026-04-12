@@ -141,7 +141,7 @@ ss-semantic/
     <h1 class="glitch-text">S.S. SEMANTIC — PROTOCOL 0</h1>
     <nav>
         <ul>
-            <li><a href="#bridge">ჟურნალი</a></li>
+            <li><a href="#journal">ჟურნალი</a></li>
             <li><a href="#logs">რადარი</a></li>
             <li><a href="#status">სტატუსი</a></li>
             <li><a href="#crew-manifest">ეკიპაჟის მონაცემები</a></li>
@@ -193,7 +193,7 @@ ss-semantic/
 `<main>`-ის შიგნით:
 
 ```html
-<section id="logs" class="reveal">
+<section id="journal" class="reveal">
     <h2>📡 კაპიტნის ჟურნალი: ვარსკვლავური დრო 4026.4</h2>
     <div class="typing-container">
         <p class="typing-text" id="captain-log">
@@ -224,7 +224,7 @@ ss-semantic/
 ## ნაბიჯი 11 — ხომალდის ხიდი (`#bridge`)
 
 ```html
-<section id="bridge" class="reveal">
+<section id="logs" class="reveal">
     <h2>🛰️ კავშირი ხომალდის ხიდთან</h2>
     <div
         class="dialogue-box"
