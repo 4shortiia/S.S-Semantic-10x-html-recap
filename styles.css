@@ -1,0 +1,608 @@
+:root {
+    --bg: #010208;
+    --neon: #00d2ff;
+    --bg-neon: #2298b3;
+    --danger: #ff003c;
+    --text: #e0e0e0;
+    --success: #39ff14;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    color: var(--text);
+    font-family: "Courier New", monospace; /* Space font */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Star effect */
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(circle at center, #050a1d 0%, #010208 100%);
+    overflow: hidden;
+}
+
+.stars {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: transparent
+        url("assets/nebula_stars_space_bright_glow_spiral_universe_galaxies_milky_way_4k_hd_space.jpg");
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    opacity: 0.2;
+    z-index: 1;
+    animation: starsRotate 180s linear infinite;
+}
+
+@keyframes starsRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Space scene*/
+#space-scene {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
+
+#earth {
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    font-size: 150px;
+    filter: drop-shadow(0 0 50px var(--neon));
+    animation: float 4s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+#rocket-container {
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    z-index: 1001;
+}
+
+#rocket {
+    font-size: 100px;
+    display: block;
+    position: relative;
+    transform: rotate(10deg);
+    transform-origin: center;
+}
+
+#fire {
+    position: absolute;
+    bottom: -62px;
+    left: 46%;
+    transform: translateX(-50%) rotate(0deg);
+    width: 30px;
+    height: 120px;
+    background: linear-gradient(to bottom, #fff, var(--neon), transparent);
+    filter: blur(8px);
+
+    transform-origin: top center;
+    animation: engineFire 0.1s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes engineFire {
+    from {
+        transform: translateX(-50%) rotate(10deg) scaleY(1);
+    }
+    to {
+        transform: translateX(-50%) rotate(10deg) scaleY(1.6);
+        opacity: 0.8;
+    }
+}
+
+/* Rocket Flight Animation Towards Earth - 3-Stage Approach */
+.flyToEarth {
+    animation: finalApproach 7.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes finalApproach {
+    0% {
+        transform: translate(0, 0) scale(1);
+    } /* Offscreen */
+    30% {
+        transform: translate(25vw, -25vh) scale(1.1);
+    } /* Enters the screen */
+    60% {
+        transform: translate(60vw, -55vh) scale(0.6);
+    } /* Toward the Earth */
+    100% {
+        transform: translate(78vw, -70vh) scale(0.05);
+        opacity: 0;
+    } /* Touch and disappear */
+}
+
+code {
+    color: var(--neon);
+    background: rgba(0, 210, 255, 0.1);
+    padding: 2px 4px;
+}
+
+/* Control panel */
+#mission-control {
+    position: relative;
+    max-width: 850px;
+    margin: 60px auto;
+    background: rgba(0, 15, 40, 0.9);
+    border: 2px solid var(--neon);
+    padding: 50px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
+    z-index: 10;
+}
+
+/* Sections appear */
+.reveal {
+    animation: slideUp 1.2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid var(--neon);
+    padding-bottom: 20px;
+}
+.glitch-text {
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon);
+}
+.alert-blink {
+    color: var(--danger);
+    animation: alert 0.6s infinite;
+    font-weight: bold;
+}
+@keyframes alert {
+    50% {
+        opacity: 0.2;
+    }
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+}
+nav a {
+    color: var(--neon);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+nav a:hover {
+    text-shadow: 0 0 10px var(--neon);
+}
+
+section {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 4px;
+    border-left: 4px solid var(--neon);
+}
+h2 {
+    color: var(--neon);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-top: 0;
+    letter-spacing: 1px;
+}
+
+/* Copy the text of the captain's log (from the image) */
+.typing-container {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    box-shadow: inset 0 0 10px rgba(0, 210, 255, 0.1);
+}
+
+.typing-text {
+    /* Neon text */
+    color: var(--neon);
+    text-shadow:
+        0 0 5px var(--bg-neon),
+        0 0 2px #fff;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    font-weight: bold;
+    border-right: 2px solid var(--neon); /* Print cursor */
+    white-space: normal;
+    overflow: hidden;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.dialogue-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #39ff14;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.zoom-img {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 15px auto;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    transition: 1s;
+}
+.zoom-img:hover {
+    transform: scale(1.02);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+}
+.danger {
+    color: var(--danger);
+    font-weight: bold;
+}
+.ready {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.launch-zone {
+    text-align: center;
+    border: 1px dashed var(--neon);
+    margin-top: 40px;
+    padding: 30px;
+}
+.pulse-text {
+    animation: pulse 1s infinite;
+    color: var(--success);
+}
+@keyframes pulse {
+    50% {
+        opacity: 0.3;
+    }
+}
+input {
+    padding: 12px;
+    background: #000;
+    border: 1px solid var(--neon);
+    color: white;
+    width: 220px;
+    text-align: center;
+    font-family: inherit;
+}
+button {
+    padding: 12px 40px;
+    background: var(--neon);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+button:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 20px #fff;
+}
+
+.hyper-jump {
+    animation: vanishes 1.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes vanishes {
+    100% {
+        transform: scale(0.1) rotate(10deg);
+        filter: blur(50px);
+        opacity: 0;
+    }
+}
+
+footer {
+    text-align: center;
+    opacity: 0.3;
+    padding: 40px 0;
+    font-size: 0.8rem;
+}
+
+/* -------- CREW TABLE STYLES -------- */
+.crew-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--neon);
+    margin-top: 15px;
+}
+
+.crew-table thead {
+    background: rgba(0, 210, 255, 0.1);
+    border-bottom: 2px solid var(--neon);
+}
+
+.crew-table th {
+    padding: 12px;
+    text-align: left;
+    color: var(--neon);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.crew-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+    color: var(--text);
+}
+
+.crew-table tbody tr:hover {
+    background: rgba(0, 210, 255, 0.05);
+    transition: 0.3s;
+}
+
+.crew-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* -------- FORM STYLES -------- */
+.repair-form,
+.jump-form {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+}
+
+fieldset {
+    border: 1px solid var(--neon);
+    border-radius: 4px;
+    padding: 20px;
+    background: rgba(0, 210, 255, 0.02);
+}
+
+legend {
+    color: var(--neon);
+    padding: 0 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--neon);
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: #000;
+    border: 1px solid var(--neon);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    border-radius: 3px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--success);
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.form-group input[type="range"] {
+    width: calc(100% - 50px);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+#damage-display {
+    color: var(--success);
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.checkbox-group {
+    background: rgba(0, 210, 255, 0.05);
+    padding: 15px;
+    border-radius: 3px;
+    border-left: 3px solid var(--neon);
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    text-transform: none;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+.checkbox-group label:last-child {
+    margin-bottom: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: var(--neon);
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    text-transform: none;
+    font-weight: normal;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.radio-group input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: var(--neon);
+}
+
+.submit-btn {
+    padding: 12px 30px;
+    background: var(--neon);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background: var(--success);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.result-box {
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 4px solid var(--success);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 3px;
+    color: var(--success);
+    animation: slideUp 0.6s ease-out;
+}
+
+.result-box.hidden {
+    display: none;
+}
+
+.result-box p {
+    margin: 8px 0;
+}
+
+/* -------- RESPONSIVE DESIGN -------- */
+@media (max-width: 768px) {
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .crew-table {
+        font-size: 0.85rem;
+    }
+
+    .crew-table th,
+    .crew-table td {
+        padding: 8px;
+    }
+
+    #mission-control {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .form-group input[type="range"] {
+        width: calc(100% - 40px);
+    }
+
+    .radio-group {
+        gap: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
