@@ -169,7 +169,7 @@ ss-semantic/
 `</header>`-ის შემდეგ:
 
 ```html
-<audio id="space-music" src="assets/audio/interstellar.mp3" loop></audio>
+<audio id="space-music" src="./assets/audio/interstellar.mp3" loop></audio>
 ```
 
 > `loop` ატრიბუტი — მუსიკა უსასრულოდ მეორდება.
@@ -274,7 +274,7 @@ ss-semantic/
 <section id="visuals" class="reveal">
     <h2>🔭 გარე ვიზუალიზაცია</h2>
     <div class="img-frame">
-        <img src="assets/cosmos.jpeg" alt="Cosmos" class="zoom-img" />
+        <img src="./assets/cosmos.jpeg" alt="Cosmos" class="zoom-img" />
     </div>
     <p class="sub-text">
         სექტორი: X-7. ობიექტი: ანდრომედას აფეთქებული ვარსკვლავი.
